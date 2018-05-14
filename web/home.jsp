@@ -38,41 +38,17 @@
                 <input type="submit" name=logout value="Sair"/>
                 <input type="button" onclick="document.location.href='quiz.jsp'" value="Realizar Quiz"/>  
             <%}%>
-        </form>  
+        </form>
+        
             <div>
-
-                <% if(session.getAttribute("userName") == null){ 
-                    TestesRealizados teste = new TestesRealizados();
-                   if (teste.getLast10Geral().size() > 0) { %>
-             <h2>Ultimos <%= teste.getLast10Geral().size() %></h2>
-                 <table>
-                     <tr>
-                         <th>Nome</th><th>Nota</th><th>Data</th>
-                     </tr>
-
-                    <% 
-                        int sizeList = (teste.getLast10Geral().size())-1;
-                        int fimRank = sizeList - 10;
-                        for(int i=sizeList;i>fimRank;i--){ %>
-                     <tr>
-                        <% if(i>=0){ %>
-                        <td><%= teste.getLast10Geral().get(i).getUser() %></td>
-                        <td><%= teste.getLast10Geral().get(i).getPontuacao() %></td>
-                        <td>teste</td>
-                        <%}else{}%>
-                     </tr>
-                
-                    <%}%>
-                 </table>
-                  <%}%>
-                <%}%>
-           </div>
-           
-           <div>
                 <% if(session.getAttribute("userName") != null){ 
                     Usuario user = new Usuario();
-                   if (user.getLast10().size() > 0) { %>
-             <h2>Ultimos <%= user.getLast10().size() %></h2>
+                    user.setNome((String)session.getAttribute("userName"));
+                    user.pegarPartidas();
+                   if (user.getLast10().size() > 0) { 
+                %>
+                <h2>Sua pontuação média: <%= user.getMedia() %></h2>
+            <h2>Seus <%= user.getLast10().size() %> Ultimos Jogos</h2>
                  <table>
                      <tr>
                          <th>Nota</th>
@@ -93,7 +69,65 @@
                  </table>
                   <%}%>
                 <%}%>
-</div>
-           
+            </div>
+            
+            <div>
+                <% 
+                   TestesRealizados teste = new TestesRealizados();
+                   if (teste.getLast10Geral().size() > 0) { %>
+                    <%if(teste.getLast10Geral().size() <= 10){%>
+                        <h2>Ultimos <%= teste.getLast10Geral().size() %> Jogos</h2>
+                    <%}else{ %>
+                        <h2>Ultimos 10 Jogos</h2>        
+                    <%}%>
+                    <table>
+                     <tr>
+                            <th>Nome</th><th>Nota</th>
+                     </tr>
+                    <% 
+                        int sizeList = (teste.getLast10Geral().size())-1;
+                        int fimRank = sizeList - 10;
+                        for(int i=sizeList;i>fimRank;i--){ %>
+                     <tr>
+                        <% if(i>=0){ %>
+                        <td><%= teste.getLast10Geral().get(i).getUser() %></td>
+                        <td><%= teste.getLast10Geral().get(i).getPontuacao() %>/100.0</td>
+                        <%}else{}%>
+                     </tr>
+                
+                    <%}%>
+                 </table>
+                <%}%>
+           </div>
+
+           <div>
+                <% 
+                  // TestesRealizados test = new TestesRealizados();
+                   if (teste.getLast10Geral().size() > 0) { 
+                    teste.gerarTopPontuacoes();
+                %>
+                    <%if(teste.getMelhoresNotas().size() <= 10){%>
+                        <h2>Top <%= teste.getMelhoresNotas().size() %> Pontuaçoes</h2>
+                    <%}else{ %>
+                        <h2>Top 10 Pontuações</h2>        
+                    <%}%>
+                    <table>
+                     <tr>
+                            <th>Nome</th><th>Nota</th>
+                     </tr>
+                    <% 
+                        int sizeList = (teste.getMelhoresNotas().size())-1;
+                        int fimRank = sizeList - 10;
+                        for(int i=sizeList;i>fimRank;i--){ %>
+                     <tr>
+                        <% if(i>=0){ %>
+                        <td><%= teste.getMelhoresNotas().get(i).getUser() %></td>
+                        <td><%= teste.getMelhoresNotas().get(i).getPontuacao() %>/100.0</td>
+                        <%}else{}%>
+                     </tr>
+                    <%}%>
+                 </table>
+                <%}%>
+           </div>
     </body>
-    </html>
+</html>

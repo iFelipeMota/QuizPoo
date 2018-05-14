@@ -11,6 +11,7 @@
     </head>
     <body>
         <h1>Web Quiz</h1>
+        <h2>Selecione o nome do jogo de acordo com a imagem.</h2>
         <form action = "resultado.jsp">
         <%            
             Quiz q = new Quiz();
