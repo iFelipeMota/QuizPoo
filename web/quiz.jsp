@@ -25,7 +25,7 @@
                 <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="sobreNos.jsp">
                                 <i class="fa d-inline fa-lg fa-reddit-alien"></i>&nbsp;
                                 <br>Sobre nós</a>
                         </li>
