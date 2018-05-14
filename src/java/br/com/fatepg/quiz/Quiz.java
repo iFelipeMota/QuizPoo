@@ -12,7 +12,7 @@ public class Quiz {
     private static ArrayList<Questoes> questoes = new ArrayList<Questoes>();
     private String user;
     private Double pontuacao;
-    public int qtQuestoes = 5;
+    public int qtQuestoes = 10;
 
     public Quiz(){
         
