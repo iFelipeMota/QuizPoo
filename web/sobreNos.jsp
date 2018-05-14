@@ -75,8 +75,8 @@
                     <div class="desc">Fernando "Bomba" Costa<br><p>Moderador</p></div>
                 </div>
             </div>
-        </div>
         <hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/>
+        
         <div class="py-5 bg-dark text-white">
             <div class="container">
                 <div class="row">

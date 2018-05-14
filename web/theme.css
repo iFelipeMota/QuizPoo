@@ -6193,6 +6193,62 @@ html, body {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #4CAF50;
+    background-color: royalblue;
     color: white;
+}
+div.gallery {
+    border: 1px solid #ccc;
+    background-color: black;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+    background-color: black;
+   
+}
+
+div.gallery img {
+    width: 297px;
+    height: 200px;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+    color:white;
+}
+
+* {
+    box-sizing: center-block;
+}
+
+.responsive {
+    padding: 0 19px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.resp{
+    margin-left: auto;
+    margin-right: auto;    
 }
