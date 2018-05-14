@@ -1,7 +1,7 @@
 <%-- 
     Document   : home
     Created on : 07/05/2018, 21:38:40
-    Author     : a
+    Author     : Ivan
 --%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="br.com.fatepg.quiz.ControleDeSessao"%>
