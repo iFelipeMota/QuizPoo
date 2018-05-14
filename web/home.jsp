@@ -8,6 +8,7 @@
 <%@page import="br.com.fatepg.quiz.Questoes"%>
 <%@page import="br.com.fatepg.quiz.Quiz"%>
 <%@page import="br.com.fatepg.quiz.TestesRealizados"%>
+<%@page import="br.com.fatepg.quiz.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -40,7 +41,7 @@
         </form>  
             <div>
 
-                <% 
+                <% if(session.getAttribute("userName") == null){ 
                     TestesRealizados teste = new TestesRealizados();
                    if (teste.getLast10Geral().size() > 0) { %>
              <h2>Ultimos <%= teste.getLast10Geral().size() %></h2>
@@ -54,9 +55,6 @@
                         int fimRank = sizeList - 10;
                         for(int i=sizeList;i>fimRank;i--){ %>
                      <tr>
-
-
-                        
                         <% if(i>=0){ %>
                         <td><%= teste.getLast10Geral().get(i).getUser() %></td>
                         <td><%= teste.getLast10Geral().get(i).getPontuacao() %></td>
@@ -66,9 +64,36 @@
                 
                     <%}%>
                  </table>
-                <%}else{%>
-                nada
-                 <%}%>
-            </div>
+                  <%}%>
+                <%}%>
+           </div>
+           
+           <div>
+                <% if(session.getAttribute("userName") != null){ 
+                    Usuario user = new Usuario();
+                   if (user.getLast10().size() > 0) { %>
+             <h2>Ultimos <%= user.getLast10().size() %></h2>
+                 <table>
+                     <tr>
+                         <th>Nota</th>
+                     </tr>
+
+                    <% 
+                        int sizeList = (user.getLast10().size())-1;
+                        int fimRank = sizeList - 10;
+                        for(int i=sizeList;i>fimRank;i--){ %>
+                     <tr>
+                        <% if(i>=0){ %>
+                        <td><%= user.getLast10().get(i) %></td>
+                        
+                        <%}else{}%>
+                     </tr>
+                
+                    <%}%>
+                 </table>
+                  <%}%>
+                <%}%>
+</div>
+           
     </body>
     </html>
